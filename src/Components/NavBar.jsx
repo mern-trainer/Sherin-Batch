@@ -1,3 +1,5 @@
+import { FaInstagram } from "react-icons/fa"
+
 const NavBar = () => {
     return <header>
         <div>Logo</div>
@@ -7,7 +9,9 @@ const NavBar = () => {
             <li>About Us</li>
             <li>Contact Us</li>
         </ul>
-        <div>ICONS</div>
+        <div>
+            <FaInstagram size={50} color="#000fff" cursor={"pointer"} fill="red"/>
+        </div>
     </header>
 }
 

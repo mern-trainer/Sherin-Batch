@@ -1,15 +1,17 @@
 import { Fragment } from "react"
-import Cards from "./Pages/Cards"
-import LandingPage from "./Pages/LandingPage"
-import States from "./Pages/states"
 import PasswordGenerator from "./Pages/PasswordGenerator"
+import TodoPage from "./Pages/TodoPage"
+import { Toaster } from "react-hot-toast"
 
 const App = () => {
     return <Fragment>
         {/* <Cards /> */}
         {/* <LandingPage /> */}
+        {/* <NavBar /> */}
         {/* <States /> */}
-        <PasswordGenerator />
+        {/* <PasswordGenerator /> */}
+        <TodoPage />
+        <Toaster position="top-right"/>
     </Fragment>
 }
 
