@@ -1,6 +1,6 @@
 
 const Footer = () => {
-    return <div>
+    return <div className="flex item">
         Footer
     </div>
 }

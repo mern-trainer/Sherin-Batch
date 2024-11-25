@@ -3,6 +3,8 @@ import toast from "react-hot-toast"
 import { FaTrash } from "react-icons/fa"
 import { v4 as uuidv4 } from "uuid"
 
+// property => props
+
 const TodoPage = () => {
 
     const [todo, setTodo] = useState("")
@@ -14,7 +16,7 @@ const TodoPage = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        if (todo == "") {
+        if (todo === "") {
             return toast.error("Task field is required!")
         }
         const dateTime = new Date().toLocaleString("en-IN")
@@ -30,11 +32,7 @@ const TodoPage = () => {
     }
 
     const handleRemoveTodo = (removeId) => {
-        const res = todoList.filter((element) => {
-            if (element.id != removeId) {
-                return true
-            }
-        })
+        const res = todoList.filter((element) => element.id !== removeId)
         setTodoList(res)
     }
 
