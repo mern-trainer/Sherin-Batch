@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 export const myContext = createContext()
 
@@ -9,4 +9,8 @@ export const MyProvider = ({ children }) => {
     return <myContext.Provider value={{ counter, setCounter }}>
         { children }
     </myContext.Provider>
+}
+
+export const useCounter = () => {
+    return useContext(myContext)
 }

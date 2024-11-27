@@ -3,9 +3,12 @@ import { createRoot } from "react-dom/client"
 import App from "./App"
 import "./index.css"
 import { MyProvider } from './Providers/MyProvider';
+import { CartProvider } from './Providers/CartProvider';
 
 const root = createRoot(document.getElementById("root"))
 
 root.render(<MyProvider>
-    <App />
+    <CartProvider>
+        <App />
+    </CartProvider>
 </MyProvider>)

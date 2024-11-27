@@ -2,7 +2,8 @@ import { Fragment } from "react"
 // import PasswordGenerator from "./Pages/PasswordGenerator"
 // import TodoPage from "./Pages/TodoPage"
 import { Toaster } from "react-hot-toast"
-import Context from "./Components/Context"
+// import Context from "./Components/Context"
+import ProductList from "./Components/ProductList"
 // import ParentComponent from "./Pages/ParentComponent"
 
 const App = () => {
@@ -14,7 +15,8 @@ const App = () => {
         {/* <States /> */}
         {/* <PasswordGenerator /> */}
         {/* <TodoPage /> */}
-        <Context />
+        {/* <Context /> */}
+        <ProductList />
         {/* <ParentComponent /> */}
         <Toaster position="top-right"/>
     </Fragment>

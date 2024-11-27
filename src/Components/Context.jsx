@@ -2,12 +2,11 @@
 // props => parent to child 
 // context api => Global state management
 
-import { useContext } from "react"
-import { myContext } from "../Providers/MyProvider"
+import { useCounter } from "../Providers/MyProvider"
 
 const Context = () => {
 
-    const { counter, setCounter } = useContext(myContext)
+    const { counter, setCounter } = useCounter()
 
     return <div className="d-flex align-items-center flex-column gap-2 mt-3">
         <div>{counter}</div>
