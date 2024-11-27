@@ -3,7 +3,7 @@
 // context api => Global state management
 
 import { useContext } from "react"
-import { myContext } from "../App"
+import { myContext } from "../Providers/MyProvider"
 
 const Context = () => {
 

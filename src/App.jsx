@@ -1,15 +1,11 @@
-import { createContext, Fragment, useState } from "react"
+import { Fragment } from "react"
 // import PasswordGenerator from "./Pages/PasswordGenerator"
-import TodoPage from "./Pages/TodoPage"
+// import TodoPage from "./Pages/TodoPage"
 import { Toaster } from "react-hot-toast"
 import Context from "./Components/Context"
 // import ParentComponent from "./Pages/ParentComponent"
 
-export const myContext = createContext()
-
 const App = () => {
-
-    const [counter, setCounter] = useState(0)
 
     return <Fragment>
         {/* <Cards /> */}
@@ -18,9 +14,7 @@ const App = () => {
         {/* <States /> */}
         {/* <PasswordGenerator /> */}
         {/* <TodoPage /> */}
-        <myContext.Provider value={{ counter, setCounter }}>
-            <Context />
-        </myContext.Provider>
+        <Context />
         {/* <ParentComponent /> */}
         <Toaster position="top-right"/>
     </Fragment>
