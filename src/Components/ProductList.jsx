@@ -22,6 +22,14 @@ const ProductList = () => {
         }
     }
 
+    const getGrandTotal = () => {
+        const res = cartList.reduce((sum, product) => {
+            const discountPrice = product.price - (product.price * product.discountPercentage / 100)
+            return sum + (discountPrice * product.quantity)
+        }, 0)
+        return res.toFixed(2)
+    }
+
     const removeFromCart = (removeId) => {
         const response = cartList.filter(product => product.id !== removeId)
         setCartList(response)
@@ -73,13 +81,25 @@ const ProductList = () => {
             <div className="d-flex justify-content-center gap-2 flex-wrap">
                 {
                     cartList.map(product => {
+
+                        const discountPrice = product.price - (product.price * product.discountPercentage / 100)
+
                         return <div key={product.id} style={{width: "15rem"}} className="bg-light p-2">
                             <div>   
                                 <img src={product.thumbnail} alt={product.title} style={{width: "15rem"}}/>
                             </div>
                             <div>
                                 <h5 className="text-truncate">{product.title}</h5>
-                                <div>${product.price}</div>
+                                <div>
+                                    <div className="d-flex justify-content-between">
+                                        <div>Price:</div>
+                                        <div>${discountPrice.toFixed(2)}</div>
+                                    </div>
+                                    <div className="d-flex justify-content-between">
+                                        <div>Total:</div>
+                                        <div>{product.quantity}x${discountPrice.toFixed(2)} = ${(product.quantity * discountPrice).toFixed(2)}</div>
+                                    </div>
+                                </div>
                                 <div className="d-flex justify-content-between align-items-center">
                                     <button className="w-25 h-25 bg-success border-0 text-light fs-4" onClick={() => handleQuantity("-", product.id)}>-</button>
                                     <div>{product.quantity}</div>
@@ -91,6 +111,7 @@ const ProductList = () => {
                     })
                 }
             </div>
+            <div className="text-center mt-5 fs-2">Grand Total: ${getGrandTotal()}</div>
         </div>
     </div>
 }
