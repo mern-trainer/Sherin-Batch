@@ -22,6 +22,25 @@ const ProductList = () => {
         }
     }
 
+    const removeFromCart = (removeId) => {
+        const response = cartList.filter(product => product.id !== removeId)
+        setCartList(response)
+    }
+
+    const handleQuantity = (operator, id) => {
+        const product = cartList.find(item => item.id === id)
+        if (product.quantity === 1 && operator === "-") {
+            return removeFromCart(id)
+        }
+        const res = cartList.map(item => {
+            if (item.id === id) {
+                return { ...item, quantity: operator === "+" ? item.quantity + 1 : item.quantity - 1 }
+            }
+            return item
+        })
+        setCartList(res)
+    }
+
     return <div className="">
         <div className="d-flex justify-content-center gap-2 flex-wrap mt-4">
             {
@@ -43,7 +62,7 @@ const ProductList = () => {
                                     <b>${discountPrice.toFixed(2)}</b>
                                 </div>
                             </div>
-                            <button onClick={() => addToCart(product)} className="btn btn-success rounded w-100">Add To Cart</button>
+                            <button onClick={() => addToCart(product)} className="btn mt-2 btn-success rounded w-100">Add To Cart</button>
                         </div>
                     </div>
                 })
@@ -61,8 +80,12 @@ const ProductList = () => {
                             <div>
                                 <h5 className="text-truncate">{product.title}</h5>
                                 <div>${product.price}</div>
-                                <div>Qty: {product.quantity}</div>
-                                <button className="btn btn-success rounded w-100">Add To Cart</button>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <button className="w-25 h-25 bg-success border-0 text-light fs-4" onClick={() => handleQuantity("-", product.id)}>-</button>
+                                    <div>{product.quantity}</div>
+                                    <button className="w-25 h-25 bg-success border-0 text-light fs-4" onClick={() => handleQuantity("+", product.id)}>+</button>
+                                </div>
+                                <button onClick={() => removeFromCart(product.id)} className="btn btn-danger rounded mt-2 w-100">Remove From Cart</button>
                             </div>
                         </div>
                     })
