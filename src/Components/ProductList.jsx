@@ -1,6 +1,7 @@
 import { FaStar } from "react-icons/fa"
 import { products } from "../Constants/todoList"
 import { useCart } from "../Providers/CartProvider"
+import ProductCard from "./ProductCard"
 
 const ProductList = () => {
 
@@ -54,25 +55,9 @@ const ProductList = () => {
             {
                 products.map(product => {
 
-                    const discountPrice = product.price - (product.price * product.discountPercentage / 100)
-
-                    return <div key={product.id} style={{width: "15rem"}} className="bg-light p-2">
-                        <div className="position-relative">   
-                            <img src={product.thumbnail} alt={product.title} style={{ width: "15rem" }} />
-                            <div className="position-absolute top-0 end-0 text-success">{product.discountPercentage}%</div>
-                        </div>
-                        <div>
-                            <h5 className="text-truncate">{product.title}</h5>
-                            <div className="d-flex justify-content-between align-items-center">
-                                <div className={`${product.rating <2 ? "text-danger" : product.rating >= 2 && product.rating < 4 ? "text-warning" : "text-success"} d-flex align-items-center gap-1`}><FaStar /> {product.rating}</div>
-                                <div className="d-flex flex-column">
-                                    <s className="text-secondary">${product.price}</s>
-                                    <b>${discountPrice.toFixed(2)}</b>
-                                </div>
-                            </div>
-                            <button onClick={() => addToCart(product)} className="btn mt-2 btn-success rounded w-100">Add To Cart</button>
-                        </div>
-                    </div>
+                    return <ProductCard product={product}>
+                        <button onClick={() => addToCart(product)} className="btn mt-2 btn-success rounded w-100">Add To Cart</button>
+                    </ProductCard>
                 })
             }
         </div>
@@ -82,32 +67,9 @@ const ProductList = () => {
                 {
                     cartList.map(product => {
 
-                        const discountPrice = product.price - (product.price * product.discountPercentage / 100)
-
-                        return <div key={product.id} style={{width: "15rem"}} className="bg-light p-2">
-                            <div>   
-                                <img src={product.thumbnail} alt={product.title} style={{width: "15rem"}}/>
-                            </div>
-                            <div>
-                                <h5 className="text-truncate">{product.title}</h5>
-                                <div>
-                                    <div className="d-flex justify-content-between">
-                                        <div>Price:</div>
-                                        <div>${discountPrice.toFixed(2)}</div>
-                                    </div>
-                                    <div className="d-flex justify-content-between">
-                                        <div>Total:</div>
-                                        <div>{product.quantity}x${discountPrice.toFixed(2)} = ${(product.quantity * discountPrice).toFixed(2)}</div>
-                                    </div>
-                                </div>
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <button className="w-25 h-25 bg-success border-0 text-light fs-4" onClick={() => handleQuantity("-", product.id)}>-</button>
-                                    <div>{product.quantity}</div>
-                                    <button className="w-25 h-25 bg-success border-0 text-light fs-4" onClick={() => handleQuantity("+", product.id)}>+</button>
-                                </div>
-                                <button onClick={() => removeFromCart(product.id)} className="btn btn-danger rounded mt-2 w-100">Remove From Cart</button>
-                            </div>
-                        </div>
+                        return <ProductCard product={product} cart={true} handleQuantity={handleQuantity}>
+                            <button onClick={() => removeFromCart(product.id)} className="btn btn-danger rounded mt-2 w-100">Remove From Cart</button>
+                        </ProductCard>
                     })
                 }
             </div>
