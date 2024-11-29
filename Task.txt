@@ -1,0 +1,2 @@
+1.  Task: User Authentication with Context API
+    Goal: Create a global authentication context to manage user login state, user data, and related functions like login and logout.
