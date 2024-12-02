@@ -4,11 +4,14 @@ import App from "./App"
 import "./index.css"
 import { MyProvider } from './Providers/MyProvider';
 import { CartProvider } from './Providers/CartProvider';
+import { AuthProvider } from './Providers/AuthProvider';
 
 const root = createRoot(document.getElementById("root"))
 
 root.render(<MyProvider>
     <CartProvider>
-        <App />
+        <AuthProvider>
+            <App />
+        </AuthProvider>
     </CartProvider>
 </MyProvider>)
