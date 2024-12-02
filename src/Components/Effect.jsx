@@ -11,16 +11,20 @@ import { useEffect, useState } from "react"
 const Effect = () => {
 
     const [counter, setCounter] = useState(0)
+    const [timer, setTimer] = useState(0)
 
     useEffect(() => {
-        console.log(counter)
-        return () => { // cleanup function
-            console.log("Unmounting...")
+        const interval = setInterval(() => {
+            setTimer(timer => timer + 1)
+        }, 1000); // 1s == 1000ms
+        return () => {
+            clearInterval(interval)
         }
     }, [counter])
 
     return <div className="d-flex flex-column gap-3 mt-4 align-items-center">
-        <div>{counter}</div>
+        <div>Timer: {timer}</div>
+        <div>Counter: {counter}</div>
         <button onClick={() => setCounter((counter) => counter + 1)}>Increment</button>
     </div>
 }
