@@ -4,6 +4,7 @@ import { Fragment } from "react"
 import { Toaster } from "react-hot-toast"
 // import Context from "./Components/Context"
 import ProductList from "./Components/ProductList"
+import Effect from "./Components/Effect"
 // import ParentComponent from "./Pages/ParentComponent"
 
 const App = () => {
@@ -16,7 +17,8 @@ const App = () => {
         {/* <PasswordGenerator /> */}
         {/* <TodoPage /> */}
         {/* <Context /> */}
-        <ProductList />
+        {/* <ProductList /> */}
+        <Effect />
         {/* <ParentComponent /> */}
         <Toaster position="top-right"/>
     </Fragment>
