@@ -12,7 +12,7 @@ const FormManage = () => {
     const handleFormSubmit = (event) => {
         event.preventDefault()
         console.log(formData)
-    }
+    }  
 
     return <div className="d-flex justify-content-center">
         <form onSubmit={handleFormSubmit} className="w-50 d-flex flex-column gap-2 mt-5">

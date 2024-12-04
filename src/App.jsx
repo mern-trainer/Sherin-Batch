@@ -3,7 +3,7 @@ import { Fragment, useState } from "react"
 // import TodoPage from "./Pages/TodoPage"
 import { Toaster } from "react-hot-toast"
 // import Context from "./Components/Context"
-// import ProductList from "./Components/ProductList"
+import ProductList from "./Components/ProductList"
 // import Effect from "./Components/Effect"
 // import FormManage from "./Components/FormManage"
 import C from "./Components/C"
@@ -25,12 +25,12 @@ const App = () => {
         {/* <PasswordGenerator /> */}
         {/* <TodoPage /> */}
         {/* <Context /> */}
-        {/* <ProductList /> */}
+        <ProductList />
         {/* <Effect /> */}
         {/* <FormManage /> */}
-        {
+        {/* {
             auth ? <C /> : page === "login" ? <B setPage={setPage} /> : <A setPage={setPage} />
-        }
+        } */}
         {/* <ParentComponent /> */}
         <Toaster position="top-right"/>
     </Fragment>

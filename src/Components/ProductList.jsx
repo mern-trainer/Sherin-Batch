@@ -1,11 +1,22 @@
 import { FaStar } from "react-icons/fa"
-import { products } from "../Constants/todoList"
 import { useCart } from "../Providers/CartProvider"
 import ProductCard from "./ProductCard"
+import { useEffect, useState } from "react"
 
 const ProductList = () => {
 
     const { cartList, setCartList } = useCart()
+    const [products, setProducts] = useState([])
+
+    const fetchData = async () => {
+        const response = await fetch(`https://dummyjson.com/products`)
+        const result = await response.json()
+        setProducts(result.products)
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
 
     const addToCart = (product) => {
         const index = cartList.findIndex((item) => item.id === product.id)
@@ -55,7 +66,7 @@ const ProductList = () => {
             {
                 products.map(product => {
 
-                    return <ProductCard product={product}>
+                    return <ProductCard product={product} key={product.id}>
                         <button onClick={() => addToCart(product)} className="btn mt-2 btn-success rounded w-100">Add To Cart</button>
                     </ProductCard>
                 })
@@ -67,7 +78,7 @@ const ProductList = () => {
                 {
                     cartList.map(product => {
 
-                        return <ProductCard product={product} cart={true} handleQuantity={handleQuantity}>
+                        return <ProductCard key={product.id} product={product} cart={true} handleQuantity={handleQuantity}>
                             <button onClick={() => removeFromCart(product.id)} className="btn btn-danger rounded mt-2 w-100">Remove From Cart</button>
                         </ProductCard>
                     })
