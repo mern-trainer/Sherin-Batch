@@ -7,16 +7,23 @@ const ProductList = () => {
 
     const { cartList, setCartList } = useCart()
     const [products, setProducts] = useState([])
+    const [currentPage, setCurrentPage] = useState(1)
+    const [totalPage, setTotalPage] = useState(-1)
 
     const fetchData = async () => {
-        const response = await fetch(`https://dummyjson.com/products`)
+        const limit = 30
+        const skip = (currentPage - 1) * limit
+        const response = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
         const result = await response.json()
+        if (totalPage === -1) {
+            setTotalPage(Math.ceil(result.total / limit))
+        }
         setProducts(result.products)
     }
 
     useEffect(() => {
         fetchData()
-    }, [])
+    }, [currentPage])
 
     const addToCart = (product) => {
         const index = cartList.findIndex((item) => item.id === product.id)
@@ -72,7 +79,14 @@ const ProductList = () => {
                 })
             }
         </div>
-        <div className="my-5">
+        <div className="d-flex gap-4 justify-content-center mt-5 mb-3">
+            {
+                totalPage > -1 && new Array(totalPage).fill(0).map((_, index) => index + 1).map(page => {
+                    return <button key={page} onClick={() => setCurrentPage(page)} className="btn d-flex justify-content-center align-items-center btn-success rounded-circle" style={{width: "30px", height: "30px"}}>{page}</button>
+                })
+            }
+        </div>
+        {/* <div className="my-5">
             <h4 className="text-center">Cart</h4>
             <div className="d-flex justify-content-center gap-2 flex-wrap">
                 {
@@ -85,7 +99,7 @@ const ProductList = () => {
                 }
             </div>
             <div className="text-center mt-5 fs-2">Grand Total: ${getGrandTotal()}</div>
-        </div>
+        </div> */}
     </div>
 }
 
