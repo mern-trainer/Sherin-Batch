@@ -1,4 +1,4 @@
-import { FaStar } from "react-icons/fa"
+import axios from "axios"
 import { useCart } from "../Providers/CartProvider"
 import ProductCard from "./ProductCard"
 import { useEffect, useState } from "react"
@@ -9,19 +9,26 @@ const ProductList = () => {
     const [products, setProducts] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPage, setTotalPage] = useState(-1)
+    const [isLoading, setLoading] = useState(true)
 
     const fetchData = async () => {
-        const limit = 30
-        const skip = (currentPage - 1) * limit
-        const response = await fetch(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
-        const result = await response.json()
-        if (totalPage === -1) {
-            setTotalPage(Math.ceil(result.total / limit))
+        try {
+            const limit = 30
+            const skip = (currentPage - 1) * limit
+            const { data: result } = await axios.get(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
+            if (totalPage === -1) {
+                setTotalPage(Math.ceil(result.total / limit))
+            }
+            setProducts(result.products)
+            setLoading(false)
+        } catch (err) {
+            console.log(err)
+            setLoading(false)
         }
-        setProducts(result.products)
     }
 
     useEffect(() => {
+        setLoading(true)
         fetchData()
     }, [currentPage])
 
@@ -68,6 +75,10 @@ const ProductList = () => {
         setCartList(res)
     }
 
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
+
     return <div className="">
         <div className="d-flex justify-content-center gap-2 flex-wrap mt-4">
             {
@@ -86,7 +97,7 @@ const ProductList = () => {
                 })
             }
         </div>
-        {/* <div className="my-5">
+        <div className="my-5">
             <h4 className="text-center">Cart</h4>
             <div className="d-flex justify-content-center gap-2 flex-wrap">
                 {
@@ -99,7 +110,7 @@ const ProductList = () => {
                 }
             </div>
             <div className="text-center mt-5 fs-2">Grand Total: ${getGrandTotal()}</div>
-        </div> */}
+        </div>
     </div>
 }
 
