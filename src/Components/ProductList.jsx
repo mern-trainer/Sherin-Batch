@@ -1,7 +1,7 @@
-import axios from "axios"
 import { useCart } from "../Providers/CartProvider"
 import ProductCard from "./ProductCard"
 import { useEffect, useState } from "react"
+import { api } from "../axios"
 
 const ProductList = () => {
 
@@ -15,7 +15,7 @@ const ProductList = () => {
         try {
             const limit = 30
             const skip = (currentPage - 1) * limit
-            const { data: result } = await axios.get(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
+            const { data: result } = await api.get(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
             if (totalPage === -1) {
                 setTotalPage(Math.ceil(result.total / limit))
             }
