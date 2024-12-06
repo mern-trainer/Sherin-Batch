@@ -7,6 +7,7 @@ import PasswordGenerator from "./Pages/PasswordGenerator"
 import Settings from "./Pages/settings"
 import UpdateSettings from "./Pages/updateSettings"
 import Profile from "./Pages/Profile"
+import CartPage from "./Pages/CartPage"
 
 const App = () => {
 
@@ -16,7 +17,8 @@ const App = () => {
                 <Route path="" Component={LandingPage} />
                 <Route path="cards" Component={Cards} />
                 <Route path="states" Component={States}/>
-                <Route path="products" Component={ProductList}/>
+                <Route path="products" Component={ProductList} />
+                <Route path="cart" Component={CartPage} />
                 <Route path="password-generator" element={<PasswordGenerator />} />
 
                 <Route path="settings">
