@@ -2,6 +2,7 @@ import { useCart } from "../Providers/CartProvider"
 import ProductCard from "./ProductCard"
 import { useEffect, useState } from "react"
 import { api } from "../axios"
+import NavBar from "./Nav"
 
 const ProductList = () => {
 
@@ -80,6 +81,7 @@ const ProductList = () => {
     }
 
     return <div className="">
+        <NavBar />
         <div className="d-flex justify-content-center gap-2 flex-wrap mt-4">
             {
                 products.map(product => {

@@ -1,39 +1,30 @@
-import { Fragment, useState } from "react"
-// import PasswordGenerator from "./Pages/PasswordGenerator"
-// import TodoPage from "./Pages/TodoPage"
-import { Toaster } from "react-hot-toast"
-// import Context from "./Components/Context"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import LandingPage from "./Pages/LandingPage"
+import Cards from "./Pages/Cards"
+import States from "./Pages/states"
 import ProductList from "./Components/ProductList"
-// import Effect from "./Components/Effect"
-// import FormManage from "./Components/FormManage"
-import C from "./Components/C"
-import B from "./Components/B"
-import A from "./Components/A"
-import { useAuth } from "./Providers/AuthProvider"
-// import ParentComponent from "./Pages/ParentComponent"
+import PasswordGenerator from "./Pages/PasswordGenerator"
+import Settings from "./Pages/settings"
+import UpdateSettings from "./Pages/updateSettings"
+import Profile from "./Pages/Profile"
 
 const App = () => {
 
-    const { auth } = useAuth()
-    const [page, setPage] = useState("signup")
+    return <BrowserRouter>
+        <Routes>
+            <Route path="/" Component={LandingPage}/>
+            <Route path="/cards" Component={Cards}/>
+            <Route path="/states" Component={States}/>
+            <Route path="/products" Component={ProductList}/>
+            <Route path="/password-generator" element={<PasswordGenerator />} />
+            <Route path="*" element={<div>Page Not Found</div>} />
 
-    return <Fragment>
-        {/* <Cards /> */}
-        {/* <LandingPage /> */}
-        {/* <NavBar /> */}
-        {/* <States /> */}
-        {/* <PasswordGenerator /> */}
-        {/* <TodoPage /> */}
-        {/* <Context /> */}
-        <ProductList />
-        {/* <Effect /> */}
-        {/* <FormManage /> */}
-        {/* {
-            auth ? <C /> : page === "login" ? <B setPage={setPage} /> : <A setPage={setPage} />
-        } */}
-        {/* <ParentComponent /> */}
-        <Toaster position="top-right"/>
-    </Fragment>
+            <Route path="/settings" Component={Settings} />
+            <Route path="/settings/update-settings" Component={UpdateSettings} />
+            <Route path="/settings/profile" Component={Profile} />
+
+        </Routes>
+    </BrowserRouter>
 }
 
 export default App 

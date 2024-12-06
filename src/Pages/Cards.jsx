@@ -1,7 +1,9 @@
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
+import NavBar from "../Components/Nav"
 
 const Cards = () => {
     return <div>
+        <NavBar />
         <Container fluid>
             <Row>
                 <Col xs="12" sm="6" md="4" lg="3" xl="2">

@@ -1,16 +1,8 @@
-// state => it's a javascript object that holds information/data in a component
-// Hooks => Functions, to manage states and lifecycle of a component
-
-// mounting, unmounting, updating => lifecycle stages
-// mounting => called after the initial render [load]
-// unmounting => called before removing component from DOM
-// updating => changes. in a component / changes in a state
-
-import { useState } from "react"
+import { Fragment, useState } from "react"
+import NavBar from "../Components/Nav"
 
 const States = () => {
 
-    // counter
     const [counter, setCounter] = useState({
         one: 0,
         two: 0
@@ -34,6 +26,8 @@ const States = () => {
     }
 
     return (
+        <Fragment>
+            <NavBar />
         <div className="d-flex flex-column align-items-center justify-content-center mt-4">
             <div className="">
                 <div>Counter 1: {counter.one}</div> 
@@ -48,6 +42,7 @@ const States = () => {
                 <button className="btn btn-secondary" onClick={() => handleUpdate(2, "-")}>Decrement 2</button>
             </div>
         </div>
+        </Fragment>
     )
     
 }

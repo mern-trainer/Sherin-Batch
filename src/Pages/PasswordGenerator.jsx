@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { Fragment, useState } from "react"
+import NavBar from "../Components/Nav"
 
 const PasswordGenerator = () => {
 
@@ -23,11 +24,13 @@ const PasswordGenerator = () => {
         setHistory([...history, generatedPassword])
     }
 
-    return <div className="d-flex justify-content-center align-items-center flex-column mt-4">
+    return <Fragment>
+        <NavBar /><div className="d-flex justify-content-center align-items-center flex-column mt-4">
         {password}
         <button onClick={createRandomPassword}>Generate Password</button>
         {history.join(" , ")}
     </div>
+    </Fragment>
 }
 
 export default PasswordGenerator

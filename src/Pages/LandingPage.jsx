@@ -1,10 +1,12 @@
 import { Fragment } from "react"
 import { Button, Card, Carousel, Container, Form, Image, Nav, Navbar } from "react-bootstrap"
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
+import NavBar from "../Components/Nav";
 
 const LandingPage = () => {
 
     return <Fragment>
+        <NavBar />
         <Navbar expand="md" className="bg-body-tertiary">
             <Container fluid>
                 <Navbar.Brand href="#home">
