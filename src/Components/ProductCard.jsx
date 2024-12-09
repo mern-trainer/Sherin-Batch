@@ -1,13 +1,16 @@
 import { Fragment } from "react"
 import { FaStar } from "react-icons/fa"
+import { useNavigate } from "react-router-dom"
 
 const ProductCard = ({ product, children, cart, handleQuantity }) => {
+
+    const navigate = useNavigate()
 
     const discountPrice = product.price - (product.price * product.discountPercentage / 100)
 
     return <div key={product.id} style={{width: "15rem"}} className="bg-light p-2">
         <div className="position-relative">   
-            <img src={product.thumbnail} alt={product.title} style={{ width: "15rem" }} />
+            <img onClick={() => navigate(`/product/${product.id}`)} src={product.thumbnail} alt={product.title} style={{ width: "15rem" }} />
             <div className="position-absolute top-0 end-0 text-success">{product.discountPercentage}%</div>
         </div>
         <div>

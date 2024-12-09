@@ -10,6 +10,7 @@ import Profile from "./Pages/Profile"
 import CartPage from "./Pages/CartPage"
 import SamplePage from "./Pages/SamplePage"
 import SinglePage from "./Pages/SinglePage"
+import SingleProductView from "./Pages/singleProductView"
 
 const App = () => {
 
@@ -34,6 +35,11 @@ const App = () => {
                     {/* <Route path="" Component={SinglePage} /> */}
                     <Route path=":id?" Component={SinglePage} />
                 </Route>
+
+                <Route path="product">
+                    <Route path=":product_id?" Component={SingleProductView} />
+                </Route>
+
             </Route>
             <Route path="*" element={<div>Page Not Found</div>} />
         </Routes>
