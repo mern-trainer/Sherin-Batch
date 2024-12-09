@@ -1,10 +1,25 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
+const isValid = false
+
+// useNavigate()
 
 const NavBar = () => {
+
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+        if (isValid) {
+            navigate("/products")
+        } else {
+            alert("can't navigate")
+        }
+    }
+
     return (
         <div className='d-flex justify-content-center gap-5'>
-            <Link to='/products'>Products</Link>
+            <button onClick={handleClick}>Products</button>
             <Link to='/cards'>Cards</Link>
             <Link to='/states'>States</Link>
             <Link to='/password-generator'>Password Generator</Link>

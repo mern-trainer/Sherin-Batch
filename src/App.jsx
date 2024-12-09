@@ -8,6 +8,8 @@ import Settings from "./Pages/settings"
 import UpdateSettings from "./Pages/updateSettings"
 import Profile from "./Pages/Profile"
 import CartPage from "./Pages/CartPage"
+import SamplePage from "./Pages/SamplePage"
+import SinglePage from "./Pages/SinglePage"
 
 const App = () => {
 
@@ -25,6 +27,12 @@ const App = () => {
                     <Route path="" Component={Settings} />
                     <Route path="update-settings" Component={UpdateSettings} />
                     <Route path="profile" Component={Profile} />
+                </Route>
+
+                <Route path="sample" Component={SamplePage} />
+                <Route path="single">
+                    {/* <Route path="" Component={SinglePage} /> */}
+                    <Route path=":id?" Component={SinglePage} />
                 </Route>
             </Route>
             <Route path="*" element={<div>Page Not Found</div>} />

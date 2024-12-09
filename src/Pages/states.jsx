@@ -9,15 +9,15 @@ const States = () => {
     })
 
     const handleUpdate = (type, operator) => {
-        if (type == 1) {
-            if (operator == "+") {
+        if (type === 1) {
+            if (operator === "+") {
                 setCounter({ ...counter, one: counter.one + 1 })
             } else {
                 setCounter({ ...counter, one: counter.one - 1 })
             }
         }
-        if (type == 2) {
-            if (operator == "+") {
+        if (type === 2) {
+            if (operator === "+") {
                 setCounter({ ...counter, two: counter.two + 1 })
             } else {
                 setCounter({ ...counter, two: counter.two - 1 })
