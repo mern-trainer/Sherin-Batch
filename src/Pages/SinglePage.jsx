@@ -6,7 +6,7 @@ const SinglePage = () => {
     const { id } = useParams()
 
     const navigate = useNavigate()
-
+ 
     return (
         <div className='d-flex justify-content-center mt-5 flex-column align-items-center gap-3'>
             <div>{id}</div>

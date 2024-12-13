@@ -11,6 +11,7 @@ import CartPage from "./Pages/CartPage"
 import SamplePage from "./Pages/SamplePage"
 import SinglePage from "./Pages/SinglePage"
 import SingleProductView from "./Pages/singleProductView"
+import FormikComp from "./Components/Formik"
 
 const App = () => {
 
@@ -18,6 +19,7 @@ const App = () => {
         <Routes>
             <Route path="/">
                 <Route path="" Component={LandingPage} />
+                <Route path="formik" Component={FormikComp} />
                 <Route path="cards" Component={Cards} />
                 <Route path="states" Component={States}/>
                 <Route path="products" Component={ProductList} />

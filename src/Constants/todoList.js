@@ -2,8 +2,7 @@ export const products = [
   {
     id: 113,
     title: "Generic Motorcycle",
-    description:
-      "The Generic Motorcycle is a versatile and reliable bike suitable for various riding preferences. With a balanced design, it provides a comfortable and efficient riding experience.",
+    description: "The Generic Motorcycle is a versatile and reliable bike suitable for various riding preferences. With a balanced design, it provides a comfortable and efficient riding experience.",
     category: "motorcycle",
     price: 3999.99,
     discountPercentage: 2.89,
