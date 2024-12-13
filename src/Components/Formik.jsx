@@ -1,8 +1,9 @@
 // Form management library
 
 import { useFormik } from "formik"
+import { object, ref, string } from "yup"
 
-const FormikComp = () => {
+const Formik = () => {
 
     const formikObj = useFormik({
         initialValues: {
@@ -15,35 +16,23 @@ const FormikComp = () => {
         onSubmit: (values) => {
             console.log(values)
         },
-        validate: ({ name, username, email, password, confirm_password }) => {
-            if (name == "") {
-                return { name: "Name is required" }
-            }
-            if (name.length < 4 || name.length > 12) {
-                return { name: "Minimum 4 char. and max 12 char." }
-            }
-            if (username == "") {
-                return { username: "Username is required" }
-            }
-            if (username.length < 4 || username.length > 12) {
-                return { username: "Minimum 4 char. and max 12 char." }
-            }
-            if (email == "") {
-                return { email: "Email is required" }
-            }
-            if (!email.includes("@") || !email.includes(".com")) {
-                return { email: "Invalid email" }
-            }
-            if (password == "") {
-                return { password: "Password is required" }
-            }
-            if (password.length < 8 || password.length > 16) {
-                return { password: "Minimum 8 char. and max 16 char." }
-            }
-            if (password != confirm_password) {
-                return { confirm_password: "Password does not match" } 
-            }
-        }
+        validationSchema: object().shape({
+            name: string()
+                .required("Name is required")
+                .matches(/^[A-Z][A-Za-z\s]{3,11}$/, { message: "Invalid Name" }),
+            username: string()
+                .required("Username is required")
+                .matches(/^[a-z][a-z_.]{3,11}$/, { message: "Invalid Username" }),
+            email: string()
+                .required("Email is required")
+                .email("Invalid email"),
+            password: string()
+                .required("Password is required")
+                .matches(/^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^0-9A-Za-z]).{8,32}$/, "Invalid Password"),
+            confirm_password: string()
+                .required("Confirm password is required")
+                .oneOf([ref("password")], "Password does not match")
+        })
     })
 
     return <div className="d-flex justify-content-center">
@@ -63,4 +52,4 @@ const FormikComp = () => {
     </div>
 }
 
-export default FormikComp
+export default Formik
