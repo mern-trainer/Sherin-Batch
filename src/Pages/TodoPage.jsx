@@ -5,19 +5,21 @@ import { v4 as uuidv4 } from "uuid"
 import Modal from "../Components/Modal"
 import { FaCircleXmark } from "react-icons/fa6"
 import EditTodo from "../Components/EditTodo"
-
-// property => props
+import { useNavigate } from "react-router-dom"
+import { useTodo } from "../Providers/TodoProvider"
 
 const TodoPage = () => {
 
     const [todo, setTodo] = useState("")
-    const [todoList, setTodoList] = useState([])
+    const { todoList, setTodoList } = useTodo()
     const [singleTodo, setSingleTodo] = useState(null)
     const [editTodo, setEditTodo] = useState(null)
 
     const handleChange = (event) => {
         setTodo(event.target.value)
     }
+
+    const navigate = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -69,7 +71,7 @@ const TodoPage = () => {
                                 <div className="d-flex gap-2 align-items-center">
                                     <FaTrash color="red" cursor={"pointer"} onClick={() => handleRemoveTodo(element.id)} />
                                     <FaEye color="gray" cursor={"pointer"} onClick={() => setSingleTodo(element)}/>    
-                                    <FaEdit color="blue" cursor={"pointer"} onClick={() => setEditTodo(element)}/>    
+                                    <FaEdit color="blue" cursor={"pointer"} onClick={() => /*setEditTodo(element)*/ navigate(`/todo/edit/${element.id}`)}/>    
                                     {
                                         element.completed ?
                                             <FaCircleXmark color="red" cursor={"pointer"} onClick={() => handleUpdateStatus(element.id)} />

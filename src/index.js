@@ -5,13 +5,16 @@ import "./index.css"
 import { MyProvider } from './Providers/MyProvider';
 import { CartProvider } from './Providers/CartProvider';
 import { AuthProvider } from './Providers/AuthProvider';
+import { TodoProvider } from './Providers/TodoProvider';
 
 const root = createRoot(document.getElementById("root"))
 
 root.render(<MyProvider>
     <CartProvider>
         <AuthProvider>
-            <App />
+            <TodoProvider>
+                <App />
+            </TodoProvider>
         </AuthProvider>
     </CartProvider>
 </MyProvider>)

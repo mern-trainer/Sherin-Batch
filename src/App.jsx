@@ -12,6 +12,8 @@ import SamplePage from "./Pages/SamplePage"
 import SinglePage from "./Pages/SinglePage"
 import SingleProductView from "./Pages/singleProductView"
 import Formik from "./Components/Formik"
+import TodoPage from "./Pages/TodoPage"
+import EditTodo from "./Pages/EditTodo"
 
 const App = () => {
 
@@ -19,6 +21,12 @@ const App = () => {
         <Routes>
             <Route path="/">
                 <Route path="" Component={LandingPage} />
+                <Route path="todo">
+                    <Route path="" Component={TodoPage} />
+                    <Route path="edit">
+                        <Route path=":id?" Component={EditTodo}  />
+                    </Route>
+                </Route>
                 <Route path="formik" Component={Formik} />
                 <Route path="cards" Component={Cards} />
                 <Route path="states" Component={States}/>
@@ -34,7 +42,6 @@ const App = () => {
 
                 <Route path="sample" Component={SamplePage} />
                 <Route path="single">
-                    {/* <Route path="" Component={SinglePage} /> */}
                     <Route path=":id?" Component={SinglePage} />
                 </Route>
 
