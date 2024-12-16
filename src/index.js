@@ -7,14 +7,19 @@ import { CartProvider } from './Providers/CartProvider';
 import { AuthProvider } from './Providers/AuthProvider';
 import { TodoProvider } from './Providers/TodoProvider';
 
+import { Provider } from 'react-redux';
+import { store } from './Redux/store';
+
 const root = createRoot(document.getElementById("root"))
 
-root.render(<MyProvider>
-    <CartProvider>
-        <AuthProvider>
-            <TodoProvider>
-                <App />
-            </TodoProvider>
-        </AuthProvider>
-    </CartProvider>
-</MyProvider>)
+root.render(<Provider store={store}>
+    <MyProvider>
+        <CartProvider>
+            <AuthProvider>
+                <TodoProvider>
+                    <App />
+                </TodoProvider>
+            </AuthProvider>
+        </CartProvider>
+    </MyProvider>
+</Provider>)

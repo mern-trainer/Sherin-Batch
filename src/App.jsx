@@ -14,6 +14,9 @@ import SingleProductView from "./Pages/singleProductView"
 import Formik from "./Components/Formik"
 import TodoPage from "./Pages/TodoPage"
 import EditTodo from "./Pages/EditTodo"
+import CounterRedux from "./Pages/CounterRedux"
+
+// redux => Global state management, js library
 
 const App = () => {
 
@@ -21,6 +24,7 @@ const App = () => {
         <Routes>
             <Route path="/">
                 <Route path="" Component={LandingPage} />
+                <Route path="redux" Component={CounterRedux} />
                 <Route path="todo">
                     <Route path="" Component={TodoPage} />
                     <Route path="edit">
