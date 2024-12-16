@@ -1,2 +1,7 @@
 1.  Task: User Authentication with Context API
     Goal: Create a global authentication context to manage user login state, user data, and related functions like login and logout.
+
+2. redux
+    a. How do you create a Redux slice to manage multiple counters?
+    b. Create a slice to toggle between two predefined string values in the Redux state.
+    c. Create a Redux slice to manage a list of strings, including actions to add, remove, and clear strings.
